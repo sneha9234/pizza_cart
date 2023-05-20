@@ -3,7 +3,9 @@ package com.example.cartpizza.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cartpizza.databinding.MainActivityBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _binding: MainActivityBinding? = null
