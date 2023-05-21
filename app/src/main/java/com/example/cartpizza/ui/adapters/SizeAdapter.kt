@@ -1,4 +1,4 @@
-package com.example.cartpizza.ui
+package com.example.cartpizza.ui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartpizza.data.PizzaModel.Crusts.Sizes
 import com.example.cartpizza.databinding.ItemSizeBinding
+import com.example.cartpizza.ui.viewholders.SizesViewHolder
+import com.example.cartpizza.ui.interfaces.TypeSelectListeners
 
 class SizeAdapter(private val listener: TypeSelectListeners): RecyclerView.Adapter<SizesViewHolder>() {
     private var cartItems = mutableListOf<Sizes?>()

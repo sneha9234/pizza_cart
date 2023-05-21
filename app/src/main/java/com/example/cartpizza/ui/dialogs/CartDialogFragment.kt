@@ -1,4 +1,4 @@
-package com.example.cartpizza.ui
+package com.example.cartpizza.ui.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.cartpizza.R
 import com.example.cartpizza.data.CartEntity
 import com.example.cartpizza.databinding.FragmentCartDialogBinding
+import com.example.cartpizza.ui.adapters.CartAdapter
+import com.example.cartpizza.ui.interfaces.CartItemClickListeners
 import com.example.cartpizza.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

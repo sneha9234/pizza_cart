@@ -23,7 +23,7 @@
 
     <dialog
         android:id="@+id/selectCrustDialogFragment"
-        android:name="com.example.cartpizza.ui.SelectCrustDialogFragment"
+        android:name="com.example.cartpizza.ui.dialogs.SelectCrustDialogFragment"
         android:label="SelectCrustDialogFragment"
         tools:layout="@layout/fragment_select_crust_dialog">
         <argument
@@ -33,7 +33,7 @@
 
     <dialog
         android:id="@+id/cartDialogFragment"
-        android:name="com.example.cartpizza.ui.CartDialogFragment"
+        android:name="com.example.cartpizza.ui.dialogs.CartDialogFragment"
         android:label="CartDialogFragment"
         tools:layout="@layout/fragment_cart_dialog">
         <argument

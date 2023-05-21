@@ -11,7 +11,7 @@
 
         <variable
             name="sizeItemClick"
-            type="com.example.cartpizza.ui.TypeSelectListeners" />
+            type="com.example.cartpizza.ui.interfaces.TypeSelectListeners" />
 
     </data>
 

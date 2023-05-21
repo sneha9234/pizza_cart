@@ -1,4 +1,4 @@
-package com.example.cartpizza.ui
+package com.example.cartpizza.ui.interfaces
 
 import com.example.cartpizza.data.PizzaModel.Crusts
 import com.example.cartpizza.data.PizzaModel.Crusts.Sizes

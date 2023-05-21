@@ -1,4 +1,4 @@
-package com.example.cartpizza.ui
+package com.example.cartpizza.ui.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.cartpizza.data.PizzaModel
 import com.example.cartpizza.databinding.FragmentSelectCrustDialogBinding
+import com.example.cartpizza.ui.adapters.CrustAdapter
+import com.example.cartpizza.ui.adapters.SizeAdapter
+import com.example.cartpizza.ui.interfaces.TypeSelectListeners
 import com.example.cartpizza.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

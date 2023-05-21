@@ -1,4 +1,4 @@
-package com.example.cartpizza.ui
+package com.example.cartpizza.ui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartpizza.data.PizzaModel
 import com.example.cartpizza.databinding.ItemPizzaBinding
+import com.example.cartpizza.ui.interfaces.PizzaItemClickListeners
+import com.example.cartpizza.ui.viewholders.PizzaViewHolder
 
 class PizzaAdapter(private val listener: PizzaItemClickListeners): RecyclerView.Adapter<PizzaViewHolder>() {
     private var pizzas = mutableListOf<PizzaModel?>()

@@ -11,7 +11,7 @@
 
         <variable
             name="pizzaItemClick"
-            type="com.example.cartpizza.ui.PizzaItemClickListeners"/>
+            type="com.example.cartpizza.ui.interfaces.PizzaItemClickListeners"/>
 
     </data>
 
