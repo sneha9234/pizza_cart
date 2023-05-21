@@ -45,29 +45,32 @@ class SelectCrustDialogFragment: DialogFragment(), TypeSelectListeners {
         binding.rvCrusts.adapter = crustAdapter
         binding.rvSizes.adapter = sizeAdapter
         viewModel.selectedPizzaName = args.pizzaInfo.name
-        args.pizzaInfo.crusts.forEach {
-            it.isSelected = it.id ==  args.pizzaInfo.defaultCrust
-        }
-        crustAdapter.setCrusts(args.pizzaInfo.crusts)
-        val defCrust = args.pizzaInfo.crusts.filter { it.id == args.pizzaInfo.defaultCrust }
-        viewModel.selectedCrustName = defCrust[0].name
-        defCrust[0].sizes.forEach {
-            if(it.id ==  defCrust[0].defaultSize){
-                it.isSelected = true
-                viewModel.selectedSizeName = it.name
-                viewModel.selectedSizePrice = it.price
+
+        viewModel.crusts = args.pizzaInfo.crusts
+        viewModel.crusts?.forEach {crustItems->
+            if(crustItems.id == args.pizzaInfo.defaultCrust){
+                crustItems.isSelected = true
+                viewModel.selectedCrustName = crustItems.name
+                crustItems.sizes.forEach { sizeItems->
+                    if(sizeItems.id == crustItems.defaultSize){
+                        sizeItems.isSelected = true
+                        viewModel.selectedSizeName = sizeItems.name
+                        viewModel.selectedSizePrice = sizeItems.price
+                    }
+                }
+                if(viewModel.crusts!=null) {
+                    crustAdapter.setCrusts(viewModel.crusts!!)
+                }
+                sizeAdapter.setSizes(crustItems.sizes)
             }
-            else{
-                it.isSelected = false
-            }
         }
-        sizeAdapter.setSizes(defCrust[0].sizes)
     }
 
     private fun initListeners() {
         binding.btnAddToCart.setOnClickListener {
             viewModel.insertItem()
             viewModel.increasePizzaQuantity(args.pizzaInfo)
+            this.dismiss()
         }
     }
 
@@ -77,27 +80,48 @@ class SelectCrustDialogFragment: DialogFragment(), TypeSelectListeners {
     }
 
     override fun onCrustSelected(crusts: PizzaModel.Crusts) {
-        args.pizzaInfo.crusts.forEach {
-            crusts.isSelected = it ==  crusts
-        }
-        crustAdapter.setCrusts(args.pizzaInfo.crusts)
-        viewModel.selectedCrustName = crusts.name
-
-        crusts.sizes.forEach {
-            if(it.id ==  crusts.defaultSize){
-                it.isSelected = true
-                viewModel.selectedSizeName = it.name
-                viewModel.selectedSizePrice = it.price
+        viewModel.crusts?.forEach { crustItem->
+            if(crustItem.id == crusts.id) {
+                crustItem.isSelected = true
+                viewModel.selectedCrustName = crustItem.name
+                crustItem.sizes.forEach{itemSizes->
+                    if(itemSizes.id ==  crusts.defaultSize){
+                        itemSizes.isSelected = true
+                        viewModel.selectedSizeName = itemSizes.name
+                        viewModel.selectedSizePrice = itemSizes.price
+                    }
+                    else{
+                        itemSizes.isSelected = false
+                    }
+                }
+                sizeAdapter.setSizes(crustItem.sizes)
             }
             else{
-                it.isSelected = false
+                crustItem.isSelected = false
             }
         }
-        sizeAdapter.setSizes(crusts.sizes)
+        viewModel.crusts?.let { crustAdapter.setCrusts(it) }
     }
 
     override fun onSizeSelected(size: PizzaModel.Crusts.Sizes) {
-        viewModel.selectedSizeName = size.name
-        viewModel.selectedSizePrice = size.price
+        viewModel.crusts?.forEach { crustItem->
+            if(crustItem.isSelected == true) {
+                crustItem.sizes.forEach{itemSizes->
+                    if(itemSizes.id ==  size.id){
+                        itemSizes.isSelected = true
+                        viewModel.selectedSizeName = size.name
+                        viewModel.selectedSizePrice = size.price
+                    }
+                    else{
+                        itemSizes.isSelected = false
+                    }
+                }
+                sizeAdapter.setSizes(crustItem.sizes)
+            }
+            else{
+                crustItem.isSelected = false
+            }
+        }
+        viewModel.crusts?.let { crustAdapter.setCrusts(it) }
     }
 }

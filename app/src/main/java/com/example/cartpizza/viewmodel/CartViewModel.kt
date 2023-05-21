@@ -20,6 +20,7 @@ class CartViewModel @Inject constructor(
     var selectedSizeName: String = ""
     var selectedPizzaName: String = ""
     var selectedSizePrice: Long = 0
+    var crusts: List<PizzaModel.Crusts>?=null
 
     val cartItems =
         repository.getCartItems().asLiveData()

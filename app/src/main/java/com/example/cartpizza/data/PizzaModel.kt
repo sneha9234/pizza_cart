@@ -16,7 +16,7 @@ data class PizzaModel(
     val defaultCrust: Int,
     val crusts: @RawValue List<Crusts>,
     //local variable
-    var quantity: Int = 0
+    var quantity: Int
 ) : Parcelable {
     data class Crusts(
         val id: Int,
@@ -24,14 +24,14 @@ data class PizzaModel(
         val defaultSize: Int,
         val sizes: List<Sizes>,
         //local variable
-        var isSelected: Boolean
+        var isSelected: Boolean?=false
     ) {
         data class Sizes(
             val id: Int,
             val name: String,
             val price: Long,
             //local variable
-            var isSelected: Boolean
+            var isSelected: Boolean?=false
         )
     }
 }
