@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.cartpizza.api.PizzaApi
 import com.example.cartpizza.data.PizzaDatabase
-import com.example.cartpizza.util.Converters
+import com.example.cartpizza.util.PizzaTypeConverters
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,5 +34,6 @@ object AppModule {
     @Singleton
     fun provideDatabase(app: Application) : PizzaDatabase =
         Room.databaseBuilder(app, PizzaDatabase::class.java, "pizza_database")
+            .addTypeConverter(PizzaTypeConverters())
             .build()
 }

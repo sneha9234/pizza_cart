@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PizzaDao {
-
     @Query("SELECT * FROM pizza_table")
     fun getAllPizzas(): Flow<PizzaModel>
 
@@ -17,5 +16,4 @@ interface PizzaDao {
 
     @Query("DELETE FROM pizza_table")
     suspend fun deleteAllPizzas()
-
 }

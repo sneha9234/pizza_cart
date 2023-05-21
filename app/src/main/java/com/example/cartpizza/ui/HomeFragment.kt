@@ -17,6 +17,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PizzaViewModel by viewModels()
+    private val adapter = PizzaAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,8 +34,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
+        binding.recyclerview.adapter = adapter
         viewModel.pizzas.observe(viewLifecycleOwner) { result ->
-            Toast.makeText(context,result.toString(), Toast.LENGTH_SHORT).show()
+            adapter.setPizzas(listOf(result.data))
         }
     }
 
