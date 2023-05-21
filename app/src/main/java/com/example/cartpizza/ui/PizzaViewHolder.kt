@@ -6,8 +6,8 @@ import com.example.cartpizza.databinding.ItemPizzaBinding
 
 class PizzaViewHolder(private val binding: ItemPizzaBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: PizzaModel, listeners: ItemClickListeners) {
-        binding.pizza= movie
+    fun bind(pizzaModel: PizzaModel, listeners: ItemClickListeners) {
+        binding.pizza= pizzaModel
         binding.productItemClick = listeners
     }
 
