@@ -2,5 +2,4 @@
     <string name="app_name">Cart Pizza</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="zero">0</string>
 </resources>

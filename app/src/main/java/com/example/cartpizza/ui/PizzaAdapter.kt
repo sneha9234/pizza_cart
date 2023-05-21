@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cartpizza.data.PizzaModel
 import com.example.cartpizza.databinding.ItemPizzaBinding
 
-class PizzaAdapter: RecyclerView.Adapter<MainViewHolder>() {
+class PizzaAdapter(val listener: ItemClickListeners): RecyclerView.Adapter<PizzaViewHolder>() {
     private var pizzas = mutableListOf<PizzaModel?>()
 
     @JvmName("setPizzas1")
@@ -20,12 +20,12 @@ class PizzaAdapter: RecyclerView.Adapter<MainViewHolder>() {
     }
 
     @NonNull
-    override fun onCreateViewHolder(@NonNull parent: ViewGroup, viewType: Int): MainViewHolder =
-        MainViewHolder(ItemPizzaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(@NonNull parent: ViewGroup, viewType: Int): PizzaViewHolder =
+        PizzaViewHolder(ItemPizzaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PizzaViewHolder, position: Int) {
         holder.apply {
-            pizzas[position]?.let { bind(it) }
+            pizzas[position]?.let { bind(it, listener) }
         }
 
     }
@@ -33,13 +33,5 @@ class PizzaAdapter: RecyclerView.Adapter<MainViewHolder>() {
     override fun getItemCount(): Int {
         return pizzas.size
     }
-
-}
-class MainViewHolder(private val binding: ItemPizzaBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(movie: PizzaModel) {
-        binding.p= movie
-    }
-
 
 }
