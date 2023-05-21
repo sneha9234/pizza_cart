@@ -10,7 +10,7 @@
             type="com.example.cartpizza.data.PizzaModel" />
 
         <variable
-            name="productItemClick"
+            name="pizzaItemClick"
             type="com.example.cartpizza.ui.PizzaItemClickListeners"/>
 
     </data>
@@ -70,7 +70,7 @@
                 android:text="@string/minus"
                 android:textSize="@dimen/text_20sp"
                 android:textStyle="bold"
-                android:onClick="@{() ->  productItemClick.onRemovePizzaClicked(pizza)}"
+                android:onClick="@{() ->  pizzaItemClick.onRemovePizzaClicked(pizza)}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
@@ -84,7 +84,7 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/txt_remove"
                 app:layout_constraintTop_toBottomOf="@+id/txt_desc"
-                android:text="@{`` +pizza.quantity , default=0}" />
+                android:text="@{`` +pizza.quantity}" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_add"
@@ -96,7 +96,7 @@
                 android:text="@string/plus"
                 android:textSize="@dimen/text_20sp"
                 android:textStyle="bold"
-                android:onClick="@{() ->  productItemClick.onAddPizzaClicked(pizza)}"
+                android:onClick="@{() ->  pizzaItemClick.onAddPizzaClicked(pizza)}"
                 app:layout_constraintStart_toEndOf="@id/txt_quantity"
                 app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 

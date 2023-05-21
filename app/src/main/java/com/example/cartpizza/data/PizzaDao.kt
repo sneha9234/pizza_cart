@@ -16,4 +16,10 @@ interface PizzaDao {
 
     @Query("DELETE FROM pizza_table")
     suspend fun deleteAllPizzas()
+
+    @Query("UPDATE pizza_table SET quantity = quantity + 1 WHERE id = :id")
+    suspend fun increasePizzaQuantity(id: String)
+
+    @Query("UPDATE pizza_table SET quantity = quantity - 1 WHERE id = :id")
+    suspend fun decreasePizzaQuantity(id: String)
 }

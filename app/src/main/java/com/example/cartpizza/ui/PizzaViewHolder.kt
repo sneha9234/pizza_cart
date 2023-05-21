@@ -8,8 +8,7 @@ class PizzaViewHolder(private val binding: ItemPizzaBinding) : RecyclerView.View
 
     fun bind(pizzaModel: PizzaModel, listeners: PizzaItemClickListeners) {
         binding.pizza= pizzaModel
-        binding.productItemClick = listeners
+        binding.pizzaItemClick = listeners
     }
-
 
 }

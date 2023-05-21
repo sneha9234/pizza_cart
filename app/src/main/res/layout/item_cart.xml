@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cart"
+            type="com.example.cartpizza.data.CartEntity" />
+
+        <variable
+            name="cartItemClick"
+            type="com.example.cartpizza.ui.CartItemClickListeners" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_10dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_item"
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_5dp"
+            app:layout_constraintEnd_toStartOf="@+id/txt_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{@string/pizza_name(cart.quantity,cart.name)}"
+            tools:text="2 Hand Tossed Medium Size Pizza"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{@string/rs_price(cart.quantity*cart.price)}"
+            tools:text="₹500" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_remove_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5dp"
+            android:text="@string/remove"
+            android:textColor="@color/red"
+            android:onClick="@{() ->  cartItemClick.onCartItemRemoved(cart)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

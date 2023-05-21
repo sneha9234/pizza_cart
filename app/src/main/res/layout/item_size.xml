@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="size"
+            type="com.example.cartpizza.data.PizzaModel.Crusts.Sizes" />
+
+        <variable
+            name="sizeItemClick"
+            type="com.example.cartpizza.ui.TypeSelectListeners" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:layout_width="@dimen/margin_0dp"
+            android:layout_height="wrap_content"
+            android:text="@{size.name}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:checked="@{size.isSelected}"
+            android:onClick="@{() ->  sizeItemClick.onSizeSelected(size)}"
+            tools:text="Medium" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_10dp"
+            android:textColor="@color/black"
+            android:text="@{@string/rs_price(size.price)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="₹500"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

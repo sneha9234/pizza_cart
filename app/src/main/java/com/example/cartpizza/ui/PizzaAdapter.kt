@@ -33,5 +33,4 @@ class PizzaAdapter(private val listener: PizzaItemClickListeners): RecyclerView.
     override fun getItemCount(): Int {
         return pizzas.size
     }
-
 }

@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.cartpizza.R
 import com.example.cartpizza.data.PizzaModel
 import com.example.cartpizza.databinding.FragmentHomeBinding
+import com.example.cartpizza.util.navigateSafely
 import com.example.cartpizza.viewmodel.PizzaViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,8 +31,8 @@ class HomeFragment : Fragment(), PizzaItemClickListeners {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         initView()
     }
 
@@ -37,6 +40,13 @@ class HomeFragment : Fragment(), PizzaItemClickListeners {
         binding.recyclerview.adapter = pizzaAdapter
         viewModel.pizzas.observe(viewLifecycleOwner) { result ->
             pizzaAdapter.setPizzas(listOf(result.data))
+        }
+        viewModel.cartItems.observe(viewLifecycleOwner) { result ->
+            var sum = 0L
+            result.forEach {
+                sum += it.quantity?.times(it.price) ?: it.price
+            }
+            binding.txtTotalPrice.text = getString(R.string.total_order_amount, sum.toString())
         }
     }
 
@@ -46,10 +56,14 @@ class HomeFragment : Fragment(), PizzaItemClickListeners {
     }
 
     override fun onAddPizzaClicked(pizza: PizzaModel) {
-        Toast.makeText(context, pizza.id+" added", Toast.LENGTH_SHORT).show()
+        findNavController().navigateSafely(
+            HomeFragmentDirections.actionHomeFragmentToCrustDialogFragment(pizza)
+        )
     }
 
     override fun onRemovePizzaClicked(pizza: PizzaModel) {
-        Toast.makeText(context, pizza.id+" removed", Toast.LENGTH_SHORT).show()
+        findNavController().navigateSafely(
+            HomeFragmentDirections.actionHomeFragmentToCartDialogFragment(pizza)
+        )
     }
 }

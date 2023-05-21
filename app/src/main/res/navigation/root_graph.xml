@@ -15,6 +15,10 @@
             android:id="@+id/action_home_fragment_to_crustDialogFragment"
             app:destination="@id/selectCrustDialogFragment" />
 
+        <action
+            android:id="@+id/action_home_fragment_to_cartDialogFragment"
+            app:destination="@id/cartDialogFragment" />
+
     </fragment>
 
     <dialog
@@ -22,9 +26,9 @@
         android:name="com.example.cartpizza.ui.SelectCrustDialogFragment"
         android:label="SelectCrustDialogFragment"
         tools:layout="@layout/fragment_select_crust_dialog">
-<!--        <argument-->
-<!--            android:name="pizzaInfo"-->
-<!--            app:argType="com.example.cartpizza.data.PizzaModel" />-->
+        <argument
+            android:name="pizzaInfo"
+            app:argType="com.example.cartpizza.data.PizzaModel" />
     </dialog>
 
     <dialog
@@ -32,7 +36,9 @@
         android:name="com.example.cartpizza.ui.CartDialogFragment"
         android:label="CartDialogFragment"
         tools:layout="@layout/fragment_cart_dialog">
-
+        <argument
+            android:name="pizzaInfo"
+            app:argType="com.example.cartpizza.data.PizzaModel" />
     </dialog>
 
 </navigation>

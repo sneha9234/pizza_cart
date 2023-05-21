@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cart_table")
 data class CartEntity(
-    @PrimaryKey(autoGenerate = true) val item_id: Int,
-    var quantity: Int,
+    @PrimaryKey(autoGenerate = true) val item_id: Int?=null,
+    var quantity: Long?=1,
     var name: String,
     var price: Long
 )
