@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cartpizza.data.PizzaModel
 import com.example.cartpizza.databinding.ItemPizzaBinding
 
-class PizzaAdapter(val listener: ItemClickListeners): RecyclerView.Adapter<PizzaViewHolder>() {
+class PizzaAdapter(private val listener: PizzaItemClickListeners): RecyclerView.Adapter<PizzaViewHolder>() {
     private var pizzas = mutableListOf<PizzaModel?>()
 
     @JvmName("setPizzas1")

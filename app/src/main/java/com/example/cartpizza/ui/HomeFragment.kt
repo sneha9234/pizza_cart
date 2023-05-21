@@ -1,7 +1,6 @@
 package com.example.cartpizza.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import com.example.cartpizza.viewmodel.PizzaViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), ItemClickListeners {
+class HomeFragment : Fragment(), PizzaItemClickListeners {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PizzaViewModel by viewModels()
