@@ -5,9 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.cartpizza.util.PizzaTypeConverters
 
-@Database(entities = [PizzaModel::class], version = 1)
+@Database(entities = [PizzaModel::class, CartEntity::class], version = 1)
 @TypeConverters(PizzaTypeConverters::class)
 abstract class PizzaDatabase : RoomDatabase() {
 
     abstract fun pizzaDao(): PizzaDao
+    abstract fun cartDao(): CartDao
 }

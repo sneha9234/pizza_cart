@@ -2,4 +2,5 @@
     <string name="app_name">Cart Pizza</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
+    <string name="total_order_amount">Total order amount: <b>₹%s</b></string>
 </resources>
